@@ -6,11 +6,77 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src="https://kit.fontawesome.com/725d6e18c9.js" crossorigin="anonymous"></script> -->
+    <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../styles/todo.css">
 </head>
 
 <body>
-    <h1>hj</h1>
+    <section class="min-h-[100vh] main-container flex justify-center pt-8">
+        <div class="w-[90%] border">
+            <h1 class="text-4xl text-center text-white text-bold my-[20px]">TickTack - Your ToDo App</h1>
+            <div class="flex items-center justify-center">
+                <input type="text" id="input-field"
+                    class="w-[40vw] px-[20px] bg-[#F2F2F2] outline-none border-[2px] focus:border-[#F58840] py-[12px] rounded-[10px]">
+                <div class="relative mx-3 box">
+                    <select id="priority-select">
+                        <option value="" selected hidden>Select Priority</option>
+                        <option value="Urgent" class="text-[#990000] font-bold">Urgent</option>
+                        <option value="Important" class="text-[#FF1E00] font-bold">Important</option>
+                        <option value="Moderate" class="text-[#FFF80A] font-bold">Moderate</option>
+                        <option value="Flexible" class="text-[#3CCF4E] font-bold">Flexible</option>
+                    </select>
+                    <i class='absolute top-[16px] right-[20px] bx bxs-caret-down-circle bx-sm'></i>
+                </div>
+                <button class="add-btn" id="task-add">Add Task</button>
+            </div>
+            <section class="flex">
+                <div class="w-1/2 border">
+                    <h2 class="text-3xl text-center text-white text-bold my-[20px]">Currently <span
+                            id="pending">0</span> task pending</h2>
+                    <div id="pending-container">
+                        <!-- <div class="new-task">
+                            <div class="absolute top-[0px] flex gap-4 right-0">
+                                <i class='cursor-pointer bx bxs-message-square-check bx-md' title='Complete task'></i>
+                                <i class='cursor-pointer bx bxs-trash-alt bx-md' title='Delete task'></i>
+                            </div>
+                            <span
+                                class="inline-block table px-4 py-2 m-auto border-[#100F0F] border-[3px] rounded-full">1</span>
+                            <p class="my-2 text-xl text-center"><span>Priority : </span><span
+                                    class="font-bold">Important</span>
+                                <span
+                                    class="inline-block w-[15px] h-[15px] rounded-full ml-2 relative top-[1px] bg-[#FF1E00]"></span>
+                            </p>
+                            <p class="text-center">Added At : <span class="font-bold">2022-8-4 11:0:38PM</span></p>
+                            <p class="my-2 text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
+                                eos
+                                molestiae distinctio
+                                fugit nam eveniet culpa id possimus libero voluptatibus!</p>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="w-1/2 border">
+                    <h2 class="text-3xl text-center text-white text-bold my-[20px]">Currently <span
+                            id="complete">0</span> task completed</h2>
+                    <div id="complete-container">
+                        <!-- <div class="complete-task">
+                            <span
+                                class="inline-block border-[#2A0944] table px-4 py-2 m-auto border-[3px] rounded-full">1</span>
+                            <p class="my-2 text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
+                                eos
+                                molestiae distinctio
+                                fugit nam eveniet culpa id possimus libero voluptatibus!</p>
+                        </div> -->
+                    </div>
+                </div>
+            </section>
+        </div>
 
+    </section>
+
+    <script src="../scripts/todo.js"></script>
 </body>
 
 </html>
