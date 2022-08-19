@@ -22,7 +22,7 @@ document.getElementById('task-add').addEventListener('click', () => {
     const firstChild = document.createElement('div')
     firstChild.classList.add('absolute', 'top-[0px]', 'flex', 'gap-4', 'right-0')
     firstChild.innerHTML = `
-                                <i class='cursor-pointer bx bxs-message-square-check bx-md' title='Complete task'></i>
+                                <i class='cursor-pointer bx bxs-message-square-check complete-btn bx-md' title='Complete task'></i>
                                 <i class='cursor-pointer delete-btn bx bxs-trash-alt bx-md' title='Delete task'></i>
     `
     mainDiv.appendChild(firstChild)
@@ -57,11 +57,9 @@ document.getElementById('task-add').addEventListener('click', () => {
     document.getElementById('pending').innerText = Number(document.getElementById('pending').innerText) + 1
     document.getElementById('input-field').value = ''
     document.getElementById('priority-select').value = ''
-    deleteTask = true
     const buttons = document.getElementsByClassName('delete-btn')
-
+    const buttons2 = document.getElementsByClassName('complete-btn')
     for (const button of buttons) {
-
         button.addEventListener('click', (e) => {
             e.target?.parentNode?.parentNode?.parentNode?.removeChild(e.target?.parentNode?.parentNode)
             document.getElementById('pending').innerText = document.getElementById('pending-container').children.length
@@ -74,6 +72,34 @@ document.getElementById('task-add').addEventListener('click', () => {
             }
         })
     }
+    for (const button2 of buttons2) {
+        button2.addEventListener('click', (e) => {
+            const reservedDiv = e.target?.parentNode?.parentNode
+            e.target?.parentNode?.parentNode?.parentNode?.removeChild(e.target?.parentNode?.parentNode)
+            document.getElementById('pending').innerText = document.getElementById('pending-container').children.length
+            const tasks = document.getElementsByClassName('new-task')
+            let initial = 1
 
+            for (let task of tasks) {
+                task.childNodes[1].innerText = initial
+                initial++
+            }
+            const completedAt = currentTimeFunc()
+            console.log(reservedDiv.children);
+            reservedDiv.children[0].style.display = 'none'
+            reservedDiv.children[2].style.display = 'none'
+            reservedDiv.children[1].innerText = document.getElementById('complete-container').children.length + 1
+            reservedDiv.children[3].style.marginTop = '10px'
+            reservedDiv.children[3].style.marginBottom = '10px'
+            reservedDiv.children[3].innerHTML = `
+            <span>Completed At : </span><span class="font-bold">${completedAt}</span>
+            `
+
+
+            console.log(reservedDiv);
+            document.getElementById('complete-container').appendChild(reservedDiv)
+            document.getElementById('complete').innerText = document.getElementById('complete-container').children.length
+        })
+    }
 })
 
