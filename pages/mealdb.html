@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../styles/mealdb.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <h1 class="text-3xl text-center font-bold my-4">Welcome to Our Restaurant</h1>
+    <section id="all-food-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+
+    </section>
+    <section>
+        <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
+            <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                <div class="fixed z-[2] inset-0 transition-opacity">
+                    <div class="absolute inset-0 bg-gray-900 opacity-75" />
+                </div>
+                <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+                <div class="inline-block align-center bg-white rounded-lg text-left overflow-x-hidden overflow-y-auto h-[90vh] shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+                    role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                    <div class="bg-white relative pt-[1.5rem] pb-[8px] px-[1.5rem]" id="modal-details">
+                    </div>
+                    <div class="bg-gray-200 px-4 py-3 text-right">
+                        <button id="cancel-btn"
+                            class="py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700 mr-2"><i
+                                class="fas fa-times"></i> Close</button>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <script src="../scripts/mealdb.js" type="module"></script>
+</body>
+
+</html>

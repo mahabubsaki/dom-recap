@@ -10,9 +10,61 @@
 
 <body>
     <h1 id="s">hi</h1>
+    <h1 id="y">bye</h1>
+    <!-- <h1>Items adding : <span id="added">0</span></h1>
+    <div>
+        <p>sdsd</p>
+        <button class="adding">add</button>
+    </div>
+    <div>
+        <p>1sdsd</p>
+        <button class="adding">add1</button>
+    </div>
+    <div>
+        <p>2sdsd</p>
+        <button class="adding">add2</button>
+    </div>
+    <div>
+        <p>3sdsd</p>
+        <button class="adding">add3</button>
+    </div>
+    <div>
+        <p>4sdsd</p>
+        <button class="adding">add4</button>
+    </div>
+    <div>
+        <p>5sdsd</p>
+        <button class="adding">add5</button>
+    </div>
+    <ol id="my-ol">
+
+    </ol> -->
     <script>
+        // const array = []
+        // const cards = document.getElementsByClassName('adding')
+        // for (const card of cards) {
+        //     card.addEventListener('click', function (e) {
+        //         console.log(document.getElementById('my-ol').children.length);
+        //         if (array.length <= 4) {
+        //             e.target.setAttribute('disabled', true)
+        //             e.target.style.backgroundColor = 'black'
+        //             const player = e.target.parentNode.children[0].innerText
+        //             array.push(player)
+        //             document.getElementById('added').innerText = parseInt(document.getElementById('added').innerText) + 1
+        //             const li = document.createElement('li')
+        //             li.innerText = player
+        //             document.getElementById('my-ol').appendChild(li)
+        //         }
+        //         else {
+        //             alert('Maximum Capacity exceeded')
+        //         }
+        //     })
+        // }
         document.getElementById('s').addEventListener('click', function () {
             window.location.href = '/pages/todo.html'
+        })
+        document.getElementById('y').addEventListener('click', function () {
+            window.location.href = '/pages/mealdb.html'
         })
     </script>
 </body>
