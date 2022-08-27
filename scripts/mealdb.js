@@ -1,3 +1,4 @@
+const cart = []
 const fetchData = () => {
     fetch("../data/data.json")
         .then((res) => res.json())
@@ -204,15 +205,67 @@ const showData = (foods) => {
         const color2 = randomColor()
         const color3 = randomColor()
         button.style.backgroundImage = `linear-gradient(to right,${color1} 0%,${color2} 51%,${color3} 100%)`
-        button.classList.add('show-details')
+        button.classList.add('show-details', 'w-full')
         button.innerText = 'Show Details'
         button.addEventListener('click', function () {
             toggleFunc(food)
         })
-        mainDiv.appendChild(button)
+        const buttonDiv = document.createElement('div')
+
+        const addToCart = document.createElement('button')
+        addToCart.addEventListener('click', function () {
+            addThisFood(food)
+        })
+        addToCart.setAttribute('title', 'Add to Cart')
+        addToCart.innerHTML = `<i class='bx bxs-cart-add bx-md'></i>`
+        buttonDiv.classList.add('flex', 'items-center', 'px-2')
+        buttonDiv.appendChild(button)
+        buttonDiv.appendChild(addToCart)
+        mainDiv.appendChild(buttonDiv)
         mainSection.appendChild(mainDiv)
     })
 }
 fetchData()
-let name = 's'
-console.log(name)
+document.getElementById('cart-icon').addEventListener('click', function () {
+    document.getElementById('cart-container').classList.replace('hidden', 'flex')
+    document.getElementById('cart-area').classList.replace('right-[-400px]', 'right-0')
+})
+document.getElementById('close-cart').addEventListener('click', () => {
+    document.getElementById('cart-container').classList.replace('flex', 'hidden')
+    document.getElementById('cart-area').classList.replace('right-0', 'right-[-400px]')
+})
+const addThisFood = (item) => {
+    const isAvailable = cart.find(food => food.idMeal === item.idMeal)
+    if (!isAvailable) {
+        item.quantity = 1
+        cart.push(item)
+    } else {
+        const rest = cart.filter(food => food.idMeal !== item.idMeal)
+        isAvailable.quantity = isAvailable.quantity + 1
+        cart.length = 0
+        cart.push(...rest, isAvailable)
+    }
+    const quantity = cart.reduce((pre, cur) => pre + cur.quantity, 0)
+    const cost = cart.reduce((pre, cur) => pre + (cur.cost * cur.quantity), 0)
+    document.getElementById('quantity-1').innerText = quantity
+    document.getElementById('quantity-2').innerText = quantity
+    document.getElementById('cost-1').innerText = cost
+    document.getElementById('cost-2').innerText = cost
+    const cartInfo = document.getElementById('cart-info')
+    cartInfo.innerHTML = ``
+    for (const fd of cart) {
+        const { strMealThumb, strMeal, quantity, cost } = fd
+        const div = document.createElement('tr')
+        div.classList.add('text-[14px]', 'p-1', 'border')
+        div.innerHTML = `
+        <td class="text-center">${cart.indexOf(fd) + 1}</td>
+        <td class="flex flex-col items-center text-center gap-1">
+        <img src="${strMealThumb}" alt="" class="w-[50px] h-[50px] rounded-full"/>
+        <p>${strMeal}</p>
+        </td>
+        <td class="text-center">${quantity}</td>
+        <td class="text-center">${cost * quantity}</td>
+        `
+        cartInfo.appendChild(div)
+    }
+}

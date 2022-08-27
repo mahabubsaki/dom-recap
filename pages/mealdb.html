@@ -12,6 +12,38 @@
 </head>
 
 <body>
+    <div id="cart-container"
+        class="hidden fixed inset-0 bg-black bg-opacity-10 backdrop-blur-[1.5px] z-[2] justify-end h-screen">
+        <div id="cart-area" class="w-[400px] bg-[yellow] relative right-[-400px] p-3 overflow-auto">
+            <div class="flex justify-end">
+                <i class='bx bx-chevron-right bx-lg cursor-pointer' id="close-cart"></i>
+            </div>
+            <p class="font-semibold text-center text-lg">Total Foods in Cart : <span id="quantity-2">0</span></p>
+            <p class="font-semibold text-center text-lg">Total Expenses : $<span id="cost-2">0</span></p>
+            <div class="mt-4">
+                <table class="w-full">
+                    <thead class="w-full mb-2">
+                        <tr class="w-full">
+                            <th scope="col" class="font-bold text-xl">No.</th>
+                            <th scope="col" class="font-bold text-xl">Food</th>
+                            <th scope="col" class="font-bold text-xl">Quantity</th>
+                            <th scope="col" class="font-bold text-xl">Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-info">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="fixed top-2 right-2 z-[1] flex flex-col items-center" id="cart-icon">
+        <div class="relative cursor-pointer">
+            <i class='bx bxs-cart-alt bx-lg'></i>
+            <span class="absolute left-0 px-[7px] py-[2px] rounded-full bg-[#CFD2CF] text-xs" id="quantity-1">0</span>
+        </div>
+        <p class="font-bold text-xl">$<span id="cost-1">0</span></p>
+    </div>
     <h1 class="text-3xl text-center font-bold my-4">Welcome to Our Restaurant</h1>
     <section id="all-food-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
 
